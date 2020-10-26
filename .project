@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>testUI</name>
+	<name>focusGui</name>
 	<comment></comment>
 	<projects>
 		<project>Paymech_XOM</project>
