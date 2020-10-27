@@ -13,6 +13,7 @@ package tester.ui;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -46,34 +47,31 @@ public class QuotePanel extends JPanel {
 	public final static boolean RIGHT_TO_LEFT = false;
 
 	private Vector<JComponent> tabelements = new Vector<JComponent>();
-
-	private String[] vehicleYear = { "2020", "2019", "2018", "2017", "2016", "2015", "2014", "2013","2012", "2011", "2010", "2009"   };
-	private JComboBox<String> vehicleYearCat = new JComboBox<String>(vehicleYear);
-
-	private String[] vehicleMake = { "BMW", "Cadillac", "Kia", "Tesla", "Suzuki", "Honda", "Volkswagen" };
-	private JComboBox<String> vehicleMakeCat = new JComboBox<String>(vehicleMake);
-	
-	private String[] vehicleModel = { "i3", "1-Series", "2-Series", "3-Series", "M3", "4-Series", "M4", "3-Series GT", "New Class 1500", "1600", "1800", "5-Series", "5-Series GT"};
-	private JComboBox<String> vehicleModelCat = new JComboBox<String>(vehicleModel);
-	
-	private String[] boldilyInjuryLimits = { "$1000", "$10,000", "$100,000", "$300,000", "$500,000", "$1000,000"   };
-	private JComboBox<String> boldilyInjuryLimitsCat = new JComboBox<String>(boldilyInjuryLimits);	
-
-	private String[] propertyDamage = { "$1000", "$10,000", "$50,000",  };
-	private JComboBox<String> propertyDamageCat = new JComboBox<String>(propertyDamage);	
-	
-	private String[] collisionWaiver = { "$1000 DED/WAIVER", "None" };
-	private JComboBox<String> collisionWaiverCat = new JComboBox<String>(collisionWaiver);		
 	
 	private JTextField firstName = new JTextField("FIRSTNAME");
 	private JTextField driverId = new JTextField("DRIVER_ID");
 	private JTextField lastname = new JTextField("LASTNAME");
 	private JTextField birthDate = new JTextField("BIRTHDATE");
 	private JTextField policyNo = new JTextField("POLICY_NO");
+	private JTextField vehicleYear = new JTextField("VEHICLE_YEAR");
+	private JTextField vehicleMake = new JTextField("VEHICLE_MAKE");
+	private JTextField vehicleModel = new JTextField("VEHICLE_MODEL");
 	private JTextField vin = new JTextField("VIN");
-
+	private JTextField bodilyInjuryLiability = new JTextField("INJURIES_LIMIT");
+	private JTextField propertyDamage = new JTextField("PROPERTY_DAMAGE");
+	private JTextField collisionWaiver = new JTextField("COLLISION_WAIVER");
+	private JTextField uninsuredMotorists = new JTextField("UNISURED_MOTORIST");
+	private JTextField comprehensive = new JTextField("COMPREHENSIVE");
+	private JTextField emergencyRoadService = new JTextField("EMERGENCY_ROAD");
+	private JTextField rentalReimbursement = new JTextField("RENTAL_REIMBURSEMENT");
+	private JTextField insuredName = new JTextField("RENTAL_REIMBURSEMENT");	
+	private JTextField address = new JTextField("RENTAL_REIMBURSEMENT");
+	private JTextField phone = new JTextField("RENTAL_REIMBURSEMENT");
+	private JTextField email = new JTextField("RENTAL_REIMBURSEMENT");
+	
 	private JCheckBox leinholder = new JCheckBox("");
 	private JCheckBox additionalinsured = new JCheckBox("");
+	private JCheckBox interestedParty = new JCheckBox("");
 	private JTextField newPremium = new JTextField("");
 
 	private JButton quote;
@@ -133,11 +131,6 @@ public class QuotePanel extends JPanel {
 		buttonPane.add(cancel);
 
 		add(buttonPane, BorderLayout.AFTER_LAST_LINE);
-		
-		
-
-
-		// controller.getTextArea().setText("Logged in");
 	}
 
 	/*
@@ -179,24 +172,52 @@ public class QuotePanel extends JPanel {
 		addTextField(policyNo, panLabel, panField, "Policy Number :",
 				"policyNo", "", true);
 		
-		addComboString(vehicleMakeCat, panLabel, panField,
-				"Vehicle Make :", "vehicleMake");		
-		addComboString(vehicleModelCat, panLabel, panField,
-				"Vehicle Make :", "vehicleModel");			
-		addComboString(vehicleYearCat, panLabel, panField,
-				"Vehicle Year :", "vehicleYear");
+		addTextField(insuredName, panLabel, panField, "Insured name :",
+				"insuredName", "", true);
+		addTextField(address, panLabel, panField, "Address :",
+				"address", "", true);
+		addTextField(phone, panLabel, panField, "Phone :",
+				"phone", "", true);	
+		addTextField(email, panLabel, panField, "Email :",
+				"email", "", true);		
+		
+		addTextField(vehicleMake, panLabel, panField, "Vehicle Make :",
+				"vehicleMake", "", true);
+
+		addTextField(vehicleModel, panLabel, panField, "Vehicle Model :",
+				"vehicleModel", "", true);
+		
+		addTextField(vehicleYear, panLabel, panField, "Vehicle Year :",
+				"vehicleYear", "", true);
+
 		addTextField(vin, panLabel, panField, "VIN :", "",
-				"", true);
+				"", true);		
 		
-		addComboString(boldilyInjuryLimitsCat, panLabel, panField,
-				"Bodily Injury Limit:", "boldilyInjuryLimits");
-		addComboString(propertyDamageCat, panLabel, panField,
-				"Property Damage Liability:", "propertyDamage");
-		addComboString(collisionWaiverCat, panLabel, panField,
-				"Property Damage Liability:", "collisionWaiver");		
+		addTextField(bodilyInjuryLiability, panLabel, panField, "Bodily Injury Liability :",
+				"bodilyInjuryLimit", "", true);
+
+		addTextField(propertyDamage, panLabel, panField, "Property Damage Liability :",
+				"propertyDamage", "", true);	
 		
+		addTextField(uninsuredMotorists, panLabel, panField, "Uninsured/Underinsured Motorists :",
+				"uninsuredMotorists", "", true);	
+
+		addTextField(comprehensive, panLabel, panField, "Comprehensive :",
+				"comprehensive", "", true);	
+		
+		addTextField(collisionWaiver, panLabel, panField, "Collision :",
+				"collisionWaiver", "", true);
+		
+		addTextField(emergencyRoadService, panLabel, panField, "Emergency Road Service :",
+				"emergencyRoadService", "", true);	
+		
+		addTextField(rentalReimbursement, panLabel, panField, "Rental Reimbursement :",
+				"rentalReimbursement", "", true);	
+			
 		addCheckBox(leinholder, panLabel, panField, "Leinholder :", "", true);	
 		addCheckBox(additionalinsured, panLabel, panField, "Additional Insured :", "", true);			
+		addCheckBox(interestedParty, panLabel, panField, "Interested Party :", "", true);	
+		
 		panLabel.add(new JSeparator());
 		panField.add(new JSeparator());
 		
@@ -236,8 +257,10 @@ public class QuotePanel extends JPanel {
 			JPanel panField, String label, String name, String defaultvalue,
 			boolean editable) {
 		JLabel l = new JLabel(label, JLabel.TRAILING);
+		// l.setFont(new Font("Helvetica", Font.PLAIN, 12));
 		panLabel.add(l);
 
+		//textField.setFont(new Font("Helvetica", Font.PLAIN, 8));
 		l.setLabelFor(textField);
 		textField.setText(defaultvalue);
 		textField.setName(name);
